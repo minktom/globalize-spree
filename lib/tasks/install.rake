@@ -10,7 +10,7 @@ namespace :globalize_spree do
       source = File.join(File.dirname(__FILE__), '..', '..', 'db')
       destination = File.join(Rails.root, 'db')
       puts "INFO: Mirroring assets from #{source} to #{destination}"
-      Spree::FileUtilz.mirror_files(source, destination)
+      Spree::Core::FileUtilz.mirror_files(source, destination)
     end
   end
 
