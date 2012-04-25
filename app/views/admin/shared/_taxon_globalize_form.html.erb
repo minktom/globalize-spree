@@ -31,9 +31,22 @@
     <%= f.file_field :icon %>
   <% end %>
 
+
+<% if(Spree::Taxon.easy_accessors.blank?) %>
   <%= f.field_container :description do %>
     <%= f.label :description, t(:description) %><br />
     <%= f.text_area :description %>
   <% end %>
+
+<% else %>
+   <%- Spree::Taxon.easy_accessors.each do |locale| %>
+      <% fieldsym = "description_#{locale}".to_sym %>
+      <%= f.field_container fieldsym do %>
+        <%= f.label fieldsym, t(fieldsym.to_s) %><br />
+        <%= f.text_area fieldsym %>
+      <% end %>    
+   <% end %> 
+
+<% end %>
 
 </div>
