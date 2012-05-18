@@ -20,9 +20,9 @@ Also, to be super-sure (I've ran into some trouble before that, needs investigat
 
 to your application Gemfile as well.
 
-Now run the rake task to copy migrations and run them:
-    rake globalize_spree:install
-    rake db:migrate
+Now run install to copy migrations and run them:
+
+    bundle exec rails g globalize_spree:install
 
 
 ## Usage

@@ -1,4 +1,3 @@
-require 'spree_core'
 module GlobalizeSpree
   class Engine < Rails::Engine
     engine_name 'globalize_spree'
@@ -9,12 +8,8 @@ module GlobalizeSpree
       #easy-globalize-accessors functionality
       ActiveRecord::Base.send :include, ActiveRecord::GlobalizeAccessors
       
-      Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
-        Rails.env.production? ? require(c) : load(c)
-      end
-
-      Dir.glob(File.join(File.dirname(__FILE__), "../app/overrides/*.rb")) do |c|
-        Rails.application.config.cache_classes ? require(c) : load(c)
+      Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|
+        Rails.configuration.cache_classes ? require(c) : load(c)
       end
       
       #enable locale fallbacks to avoid nasty errors
